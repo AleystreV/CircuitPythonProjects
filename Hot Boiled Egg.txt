@@ -1,0 +1,38 @@
+#PyCon Presentation
+#This is the code for the game "Hot Boiled Egg" or Lit Potato
+
+from adafruit_circuitplayground.express import cpx
+import adafruit_fancyled.adafruit_fancyled as fancy
+import board
+import neopixel
+import time
+import random
+strip = neopixel.NeoPixel(board.D1, 10, auto_write=False)
+cpx.pixels.auto_write = False  # Update only when we say
+cpx.pixels.brightness = 0.7   # make less blinding
+
+#You can change color values if you like
+palette = [fancy.CRGB(220, 0, 255),  # Purple
+           fancy.CRGB(255, 0, 212),    # Pink
+           fancy.CRGB(0, 255, 25),      # Green
+           fancy.CRGB(0, 255, 229)]         # Blue (turquoise)
+
+
+offset = 0  # Position offset into palette to make it "spin"
+flag = 0
+while True:
+    if cpx.button_a or cpx.button_b:
+        flag = 1
+        Seconds = random.randint(10
+        , 20)
+        print(Seconds)
+        time.sleep(Seconds)
+    
+    if flag == 1:
+        for i in range(10):
+            color = fancy.palette_lookup(palette, offset + i / 10)
+            cpx.pixels[i] = color.pack()
+        cpx.pixels.show()
+
+        offset += 0.5  # Bigger number = faster spin
+        cpx.play_file("alarm_be.wav") #Please download any .wav file for this
