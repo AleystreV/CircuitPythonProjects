@@ -1,4 +1,4 @@
-#PyCon Presentation
+#Check the README for details
 #This is the code for the game "Hot Boiled Egg" or Lit Potato
 
 from adafruit_circuitplayground.express import cpx
